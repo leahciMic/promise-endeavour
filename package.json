@@ -1,0 +1,35 @@
+{
+  "name": "promise-retrier",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leahciMic/promise-retrier.git"
+  },
+  "author": "Michael Leaney <leahcimic@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.2",
+    "@types/node": "^9.6.0",
+    "jest": "^22.4.3",
+    "ts-jest": "^22.4.2",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.7.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}

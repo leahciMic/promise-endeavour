@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "lib": ["ES2017", "DOM"],
+    "target": "es5",
+    "outDir": "dist/"
+  },
+  "files": ["promiseRetry.ts"]
+}
