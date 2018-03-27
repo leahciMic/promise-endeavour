@@ -1,7 +1,7 @@
 const promiseEndeavour = require('../');
 const fetch = require('node-fetch');
 
-async function getDogs() {
+async function getDogs(lol) {
   const response = await fetch('https://dog.ceo/api/breeds/list/all');
   return response.json();
 }

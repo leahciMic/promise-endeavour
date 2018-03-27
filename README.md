@@ -33,8 +33,20 @@ promiseEndeavour(getDogs, retry)
 
 ## API
 
-A much more refined API allowing you to specify what transforms, and options for
-those transforms is coming.
+### `promiseEndeavour(promiseFactory, onFailure) => promiseRetryingFactory`
+
+`promiseFactory` is a function that returns a promise. `onFailure` is a
+function that controls the retry logic.
+
+### `onFailure(error, attempt) => boolean | number`
+
+onFailure will be called when the promise returned by `promiseFactory` rejects.
+`error` will be the rejection value, and `attempt` is a number representing
+how many times we've attempted so far. If it fails once, the attempt will be `1`.
+
+The return value of `onFailure` controls the retry logic. To stop retrying return
+`false`. To retry immediately return `true`. To retry after a delay, return a
+number in *milliseconds*.
 
 ## Contribute
 
@@ -45,13 +57,3 @@ PRs accepted.
 ## License
 
 [MIT © Michael Leaney](LICENSE)
-
-
-
-# TODO
-
-Get coverage somewhere
-Get travis running
-Write an example
-Write the rest of the readme
-Publish!

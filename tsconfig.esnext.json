@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ESNext",
-    "lib": "ESNext",
+    "lib": ["ESNext", "DOM"],
     "outDir": "dist-esnext/"
   },
   "files": ["src/promiseEndeavour.ts"]
