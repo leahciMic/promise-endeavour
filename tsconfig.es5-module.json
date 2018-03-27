@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "ES5",
+    "outDir": "dist-es5-module/"
+  },
+  "files": ["src/promiseEndeavour.ts"]
+}

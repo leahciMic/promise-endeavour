@@ -1,9 +1,5 @@
-type OnFailureCallback = {
-  (error: any, attempt: number): number | boolean | void | null
-}
-
 function getGlobal() {
-  return typeof window !== undefined ?
+  return typeof window !== 'undefined' ?
     window : /* istanbul ignore next */ global;
 }
 
@@ -30,15 +26,31 @@ const CALLBACK_INVALID_RETURN = 'onFailure must return boolean, or delay in ms';
  *
  * @example
  *
+ * const promiseEndeavour = require('../dist/promiseEndeavour.js');
+ * const fetch = require('node-fetch');
+ *
+ * async function getDogs() {
+ *   const response = await fetch('https://dog.ceo/api/breeds/list/all');
+ *   return response.json();
+ * }
+ *
+ * const retries = [100, 500, 1000];
+ *
+ * function retry(error, attempt) {
+ *   return retries[attempt - 1] || false;
+ * }
+ *
+ * promiseEndeavour(getDogs, retry)()
+ *   .then(dogs => console.log(dogs));
  *
  * @param promiseFactory A promise returning function
  * @param onFailure A function to be called when the promise returned by promiseFactory is rejected
  * @param maxAttempts Maximum number of attempts regardless of onFailure
  * @return A function with the same interface to promiseFactory
  */
-function promiseRetry<R, T extends (...args: any[]) => Promise<R>>(
+function promiseEndeavour<R, T extends (...args: any[]) => Promise<R>>(
   promiseFactory: T,
-  onFailure: OnFailureCallback,
+  onFailure: (error: any, attempt: number) => number | boolean | void | null,
   maxAttempts: Number = 10
 ): T {
   return async function(...args: any[]): Promise<any> {
@@ -64,4 +76,4 @@ function promiseRetry<R, T extends (...args: any[]) => Promise<R>>(
   } as T;
 }
 
-export default promiseRetry;
+export default promiseEndeavour;

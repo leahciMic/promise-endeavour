@@ -8,8 +8,13 @@
   "author": "Michael Leaney <leahcimic@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepare": "tsc && tsc --project ./tsconfig.es5-module.json && tsc --project ./tsconfig.es5.json"
   },
+  "module": "./dist-es5-module/promiseEndeavour.js",
+  "main": "./dist/promiseEndeavour.cjs.js",
+  "esnext": "./dist-esnext/promiseEndeavour.js",
+  "types": "./dist/promiseEndeavour.cjs.d.ts",
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "^9.6.0",
@@ -31,5 +36,8 @@
       "json",
       "node"
     ]
+  },
+  "dependencies": {
+    "node-fetch": "^2.1.2"
   }
 }

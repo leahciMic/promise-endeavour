@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": "ESNext",
+    "outDir": "dist-esnext/"
+  },
+  "files": ["src/promiseEndeavour.ts"]
+}

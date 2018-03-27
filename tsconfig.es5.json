@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "UMD",
+    "target": "es5",
+    "outDir": "dist/"
+  },
+  "files": ["src/promiseEndeavour.cjs.ts"]
+}

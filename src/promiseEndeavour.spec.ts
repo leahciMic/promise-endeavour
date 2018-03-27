@@ -1,14 +1,14 @@
-import promiseRetry from './promiseRetry';
+import promiseEndeavour from './promiseEndeavour';
 
-describe('promiseRetry', () => {
+describe('promiseEndeavour', () => {
   it('should resolve with correct value', async () => {
-    const value = await promiseRetry(async msg => msg, () => {})('foo');
+    const value = await promiseEndeavour(async msg => msg, () => {})('foo');
     expect(value).toBe('foo');
   });
 
   it('should reject with correct value', async () => {
     try {
-      await promiseRetry(async () => { throw new Error('foo'); }, () => {})();
+      await promiseEndeavour(async () => { throw new Error('foo'); }, () => {})();
     } catch(err) {
       expect(err.message).toBe('foo');
     }
@@ -20,7 +20,7 @@ describe('promiseRetry', () => {
 
     try {
       let i = 0;
-      await promiseRetry(spy, (error, attempt) => attempt < 5)();
+      await promiseEndeavour(spy, (error, attempt) => attempt < 5)();
     } catch(err) {
       expect(spy).toHaveBeenCalledTimes(5);
       expect(err.message).toBe('foo');
@@ -33,7 +33,7 @@ describe('promiseRetry', () => {
 
     try {
       let i = 0;
-      await promiseRetry(spy, (error, attempt) => true, 6)();
+      await promiseEndeavour(spy, (error, attempt) => true, 6)();
     } catch(err) {
       expect(spy).toHaveBeenCalledTimes(6);
       expect(err.message).toBe('foo');
@@ -47,7 +47,7 @@ describe('promiseRetry', () => {
     spy.mockRejectedValueOnce(new Error('err'));
     spy.mockResolvedValueOnce('ok');
 
-    const value = await promiseRetry(spy, () => { return true; })();
+    const value = await promiseEndeavour(spy, () => { return true; })();
 
     expect(value).toBe('ok');
   });
@@ -66,7 +66,7 @@ describe('promiseRetry', () => {
 
     jest.useFakeTimers();
 
-    const futureValue = promiseRetry(spy, () => { return 1000; })();
+    const futureValue = promiseEndeavour(spy, () => { return 1000; })();
 
     await exhaustMicrotasks();
 
@@ -87,9 +87,9 @@ describe('promiseRetry', () => {
 
   it('should error when being silly', async () => {
     try {
-      await promiseRetry(async () => { throw new Error('foo') }, () => 'foo')();
+      await promiseEndeavour(async () => { throw new Error('foo') }, () => 'foo')();
     } catch (err) {
-      expect(err.message).toBe('onFailure callback should return false, true, or delay in ms');
+      expect(err.message).toBe('onFailure must return boolean, or delay in ms');
     }
   });
 });
