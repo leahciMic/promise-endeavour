@@ -1,6 +1,6 @@
 {
   "name": "promise-endeavour",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/leahciMic/promise-endeavour.git"
@@ -14,7 +14,7 @@
   "module": "./dist-es5-module/promiseEndeavour.js",
   "main": "./dist/promiseEndeavour.cjs.js",
   "esnext": "./dist-esnext/promiseEndeavour.js",
-  "types": "./dist-es5-module/promiseEndeavour.cjs.d.ts",
+  "types": "./dist-es5-module/promiseEndeavour.d.ts",
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "^9.6.0",

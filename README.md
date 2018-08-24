@@ -48,6 +48,10 @@ The return value of `onFailure` controls the retry logic. To stop retrying retur
 `false`. To retry immediately return `true`. To retry after a delay, return a
 number in *milliseconds*.
 
+## Changelog
+
+1.0.2 - Fix types field in package.json
+
 ## Contribute
 
 See [the contribute file](CONTRIBUTING.md)!
